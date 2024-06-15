@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CanvasJetpackCompose</string>
+
+    <string name="gallery1">Galeria 1</string>
+    <string name="gallery2">Galeria 2</string>
+    <string name="gallery3">Galeria 3</string>
+    <string name="gallery4">Galeria 4</string>
+    <string name="gallery5">Galeria 5</string>
+    <string name="galeria_1dd">Galeria 1</string>
+
+</resources>

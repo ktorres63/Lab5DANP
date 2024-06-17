@@ -1,6 +1,5 @@
 package com.tutorial.canvasjetpackcompose
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -105,20 +105,17 @@ fun GalleryCanva() {
                 customWidth, customHeight, 0f, 10f, 2f, 17f
             )
 
-            drawRect(color = Color.Green, size = Size(150f,80f))
-
-            drawPath(roomPath, Color.Blue, style = Stroke(width = 8f))
-            drawPath(treePath1, Color.Blue, style = Stroke(width = 8f))
-            drawPath(chapelPath, Color.Blue, style = Stroke(width = 8f))
-            drawPath(lockRoomPath, Color.Blue, style = Stroke(width = 8f))
-            drawPath(unknownRoomPath, Color.Blue, style = Stroke(width = 8f))
-
+            //Entrada
+            withTransform({
+                translate(left = customWidth * 8f, top = customHeight * -15f)
+                rotate(degrees = 270F)
+            }) { drawText(measuredText("Entrada", textMeasurer), color = Color.LightGray) }
 
             //Gallery 1 (border,rectangle and text)
             drawPath(gallery1Path, Color(0xFFDB073D))
             drawPath(gallery1Path, Color.Black, style = Stroke(width = 8f))
             translate(left = customWidth * 6.5f, top = customHeight * 0.5f) {
-                drawText(measuredText("Galeria 1", textMeasurer), )
+                drawText(measuredText("Galeria 1", textMeasurer))
             }
 
             //Gallery 2 (border,rectangle and text)
@@ -133,7 +130,7 @@ fun GalleryCanva() {
             drawPath(gallery3Path, Color(0xFF8EC7D2))
             drawPath(gallery3Path, Color.Black, style = Stroke(width = 8f))
             translate(left = customWidth * 5.5f, top = customHeight * 6f) {
-                drawText(measuredText("Galeria 3", textMeasurer), )
+                drawText(measuredText("Galeria 3", textMeasurer))
             }
             //Gallery 4 (border,rectangle and text)
             drawPath(gallery4Path, Color(0xFF0D6A87))
@@ -151,7 +148,6 @@ fun GalleryCanva() {
                 rotate(degrees = 270F)
             }) { drawText(measuredText("Galeria 5", textMeasurer), color = Color.LightGray) }
 
-
             //Gallery 6 (border,rectangle and text)
             drawPath(gallery6Path, Color(0xFF00B8A3))
             drawPath(gallery6Path, Color.Black, style = Stroke(width = 8f))
@@ -161,6 +157,50 @@ fun GalleryCanva() {
                 rotate(degrees = 90F)
             }) { drawText(measuredText("Galeria 6", textMeasurer)) }
 
+            //Tree
+            drawPath(treePath1, Color(0xff454545))
+            drawPath(treePath1, Color.Black, style = Stroke(width = 8f))
+            drawCircle(
+                color = Color(0xFF03C959),
+                radius = 90f,
+                center = Offset(x = customWidth * 6f, y = customHeight * 19.7f)
+            )
+            translate(left = customWidth * 5.4f, top = customHeight * 19.3f) {
+                drawText(measuredText("Arbol", textMeasurer))
+            }
+
+            // Block Rooms
+            drawPath(roomPath, Color(0xff454545))
+            drawPath(roomPath, Color.Black, style = Stroke(width = 8f))
+            translate(left = customWidth * 5.5f, top = customHeight * 15.3f) {
+                drawText(measuredText("Bloqueado", textMeasurer), Color.White)
+            }
+
+            drawPath(lockRoomPath, Color(0xff454545))
+            drawPath(lockRoomPath, Color.Black, style = Stroke(width = 8f))
+            withTransform({
+                translate(left = customWidth * 5.8f, top = customHeight * -2.7f)
+                rotate(degrees = 270F)
+            }) { drawText(measuredText("Bloqueado", textMeasurer), color = Color.LightGray) }
+
+            drawPath(unknownRoomPath, Color(0xff454545))
+            drawPath(unknownRoomPath, Color.Black, style = Stroke(width = 8f))
+
+            drawPath(chapelPath, Color(0xffD1BCE3))
+            drawPath(chapelPath, Color.Black, style = Stroke(width = 8f))
+            translate(left = customWidth * 6.8f, top = customHeight * 8.3f) {
+                drawText(measuredText("Capilla", textMeasurer))
+            }
+
+            //Tree 2
+            drawCircle(
+                color = Color(0xFF03C959),
+                radius = 110f,
+                center = Offset(x = customWidth * 6f, y = customHeight * 12.3f)
+            )
+            translate(left = customWidth * 5.3f, top = customHeight * 11.9f) {
+                drawText(measuredText("Arbol", textMeasurer))
+            }
 
         }
     }
